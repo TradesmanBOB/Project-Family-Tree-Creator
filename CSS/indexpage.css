@@ -1,0 +1,60 @@
+/* h1 title for index page */
+h1 {
+    text-align: center;
+    font-size: 4em;
+    color: #000;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* background */
+body {
+    background-color: #666;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Main Index content */
+main div.container {
+    text-align: center;
+}
+
+div.container h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5em;
+    color: #000;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+/* registry buttons */
+.container-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 20px;
+}
+
+.container-button a {
+    background-color: #33ff00;
+    color: #000;
+    
+    padding: 10px 20px;
+    
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+    text-align: center;  
+    
+    text-decoration: none;
+    font-size: 1.2em;
+    
+}

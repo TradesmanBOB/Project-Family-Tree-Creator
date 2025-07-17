@@ -1,0 +1,57 @@
+nav {
+    background-color: #000000;
+    color: white;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 3rem;
+}
+
+nav ul li {
+    display: inline;
+}
+
+li.homeanchor a,
+li.treeanchor a, 
+li.aboutanchor a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+    vertical-align: middle;
+    display: inline-block;
+    line-height: 1;
+}
+
+nav a:hover {
+    background-color: #555;
+    
+}
+
+nav ul li.account {
+    position: relative;
+}
+
+nav ul li.account:hover ul.dropdown,
+nav ul li.account:focus-within ul.dropdown {
+    display: flex;
+}
+
+h1 a {
+    color: inherit;
+    text-decoration: none;
+}
+
+h1 a:hover {
+    color: #ef0;
+    text-decoration: none;
+}

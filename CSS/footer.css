@@ -1,0 +1,20 @@
+/* footer */
+footer {
+    position: fixed;
+    bottom: 0;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 10px;
+    width: 100%;
+    z-index: -1;
+    margin: 0;
+}
+
+footer p {
+    margin: 0;
+    font-size: 1.25rem;
+    color: #fff;
+    text-align: center;
+    vertical-align: middle;
+}

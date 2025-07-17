@@ -1,0 +1,46 @@
+/* Main content area */
+main {
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Add Member CSS */
+section.form-section {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    left: 1.125%;
+    top: 17%;
+}
+
+section.form-section h2 {
+    font-size: 1.8em;
+    margin-top: auto;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Form elements */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="date"],
+select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    font-size: 1em;
+}
+
+/* insert general map here */
