@@ -17,6 +17,7 @@ nav ul {
 
 nav ul li {
     display: inline;
+    list-style: none;
 }
 
 li.homeanchor a,
@@ -52,6 +53,6 @@ h1 a {
 }
 
 h1 a:hover {
-    color: #ef0;
+    color: rgb(72, 255, 0);
     text-decoration: none;
 }

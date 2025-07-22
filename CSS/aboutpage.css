@@ -1,14 +1,15 @@
-.h1-about {
-    font-size: 4.5rem;
-    color: #000;
-    margin-bottom: 1rem;
-}
-
-body.about-page {
+.about-page {
     font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
     line-height: 1.75;
     margin: 0;
     padding: 0;
+    background-color: #282828;
+}
+
+.h1-about {
+    font-size: 4.5rem;
+    color: #c8c8c8;
+    margin-bottom: 1rem;
 }
 
 div.container-main {
@@ -28,6 +29,7 @@ div.container-main {
     font-size: 2.5rem;
     margin-bottom: 0.5rem;
     color: #000;
+    color: #c8c8c8;
 }
 
 p {
@@ -36,3 +38,8 @@ p {
     font-size: 1.1rem;
 }
 
+p.notice {
+    font-style: bold;
+    font-size: 1.6rem;
+    color: #96b2ff;
+}
