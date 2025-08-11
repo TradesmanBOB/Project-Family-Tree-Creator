@@ -31,7 +31,7 @@ div.container-main {
     color: #c8c8c8;
 }
 
-.p-index {
+.p-about {
     font-size: 1.5rem;
     color: #c8c8c8;
     margin: 0;
@@ -44,7 +44,7 @@ p {
     font-size: 1rem;
 }
 
-p.paragraphone {
+p.paragraph {
     font-size: 1.6rem;
     color: #e0e0e0;
     margin-bottom: 0;

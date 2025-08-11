@@ -3,8 +3,8 @@ h1 {
     text-align: center;
     font-size: 4em;
     color: #000;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 
 /* background */
@@ -16,9 +16,20 @@ body {
 }
 
 /* Main Index content */
-main div.container {
-    text-align: center;
+.main-index {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+}
 
+div.container-index {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
 }
 
 .container-index h2 {
@@ -27,10 +38,7 @@ main div.container {
     align-items: center;
     font-size: 2.5em;
     color: #000;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0;
 }
 
 .p-index {
@@ -38,37 +46,45 @@ main div.container {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 2.5rem;
-    margin-top: 6rem;
-    font-size: 1.7rem;
+    gap: 3rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
 }
 
-.p-index p {
+.p-index .subtitle {
+    font-size: 1.8em;
+    color: #fff;
+    margin: 0 auto;
+}
+
+.p-index .getstarted-btn {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-size: 1.7rem;
+    font-size: 1.5em;
+    color: #fff;
+    margin: 0;
 }
 
 .reason-p {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     color: #3f0;
     max-width: 950px;
     margin: 0 auto;
 }
 
 /* registry buttons */
-.container-button {
+.container-button-index {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 1.5rem;
-    margin-top: 20px;
+    margin: 2rem 1.5rem 1.5rem 1.5rem;
 }
 
-.container-button a {
+.container-button-index a {
     background-color: #3f0;
     color: #000;
     
@@ -80,10 +96,9 @@ main div.container {
     
     text-decoration: none;
     font-size: 1.5em;
-    
 }
 
-.container-button a:hover, .container-button a:focus {
+.container-button-index a:hover, .container-button-index a:focus {
     background-color: #222;
     border: 1px solid #3f0;
     color: #3f0;
