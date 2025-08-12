@@ -21,7 +21,7 @@ div.container-main {
     max-width: 1250px;
     margin: 0 auto;
     padding: 20px;
-    gap: 3.5rem;
+    gap: 2.5rem;
 }
 
 .container-main h2 {
@@ -35,23 +35,24 @@ div.container-main {
     font-size: 1.5rem;
     color: #c8c8c8;
     margin: 0;
-    gap: 2.5rem;
 }
 
 p {
     color: #e0e0e0;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
     font-size: 1rem;
 }
 
 p.paragraph {
     font-size: 1.6rem;
     color: #e0e0e0;
-    margin-bottom: 0;
+    margin-bottom: 2rem;
 }
 
 p.notice {
-    font-style: bold;
+    font-weight: bold;
     font-size: 1.6rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
     color: rgb(255, 136, 0);
 }

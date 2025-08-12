@@ -1,36 +1,102 @@
 /* Main content area */
-main {
+.familytrees-body {
     margin: 0 auto;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #282828;
 }
 
-/* Add Member CSS */
-section.form-section {
-    background-color: #fff;
-    padding: 20px;
+/* Container for page detail & use */
+div.container-familytree {
+    background-color: #aaaaaa;
+    padding: 1.5rem;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    position: fixed;
-    left: 1.125%;
-    top: 17%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-section.form-section h2 {
-    font-size: 1.8em;
-    margin-top: auto;
-    margin-bottom: 20px;
+h2 {
+    font-size: 2.5em;
+    margin: 0;
+    margin-bottom: 2rem;
+    color: #3f0;
+}
+
+.p-familytree {
+    font-size: 1.5em;
+    color: #00005d;
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-left: 8rem;
+    padding-right: 8rem;
+}
+
+.familytree-instructions {
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 1.5em;
     color: #333;
+    margin-bottom: 1rem;
+    padding: 1rem 1rem;
+    min-width: 120px;
+    min-height: 50px;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.familytree-instructions button {
+    background-color: #3f0;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Div for member-creator */
+#member-creator {
+    background-color: #d2d2d2;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    margin-left: 2rem;
+}
+
+h3 {
+    font-size: 1.8em;
+    color: #000;
+    margin: 1rem;
+    padding: 1rem;
 }
 
 /* Form elements */
 form {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
 }
 
 label {
     margin-bottom: 8px;
     font-weight: bold;
+    margin: 0;
 }
 
 input[type="text"],
@@ -40,7 +106,42 @@ select {
     border: 1px solid #ccc;
     border-radius: 4px;
     margin-bottom: 15px;
-    font-size: 1em;
+    font-size: 1.5em;
+}
+
+label {
+    font-size: 1.5em;
+    color: #000;
+    margin-bottom: 0;
+}
+
+#related-to {
+    font-size: 1.5em;
+    color: #000;
+    margin-bottom: 0;
+    width: 100%;
+    max-width: 200px;
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-member-button {
+    background-color: #3f0;
+    color: #000;
+    border: none;
+    padding: 2rem 2rem;
+    font-size: 2em;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 1rem;
+    max-width: 200px;
+    width: 100%;
 }
 
 /* insert general map here */

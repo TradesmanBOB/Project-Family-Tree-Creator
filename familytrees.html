@@ -8,7 +8,7 @@
 </head>
 
 <!-- Body Starts now! -->
-<body class="familytrees-body">
+<body class="familytrees-page">
     <!-- Site Header -->
      <header>
         <div class="container">
@@ -17,13 +17,12 @@
                 <ul>
                     <li class="homeanchor"><a href="index.html">Home</a></li>
                     <li class="treeanchor"><a href="familytrees.html">My Tree</a></li>
-
+                    <li class="aboutanchor"><a href="about.html">About</a></li>
                     <li class="download-img-nav">
-                        <button id="download-img-btn" class="download-btn" aria-label="Download family tree image">
+                        <button id="download-img-btn-nav" class="download-btn" aria-label="Download family tree image">
                             Download as Image
                         </button>
                     </li>
-                    <li class="aboutanchor"><a href="about.html">About</a></li>
                 </ul>
             </nav>
         </div>
@@ -31,15 +30,47 @@
 
     <!-- Main content -->
     <main>
-        <div class="container-index">
-            <h2>Prepare, to grow a tree upwards!</h2>
-            <div class="p-index">
-                <p>Test</p>
+        <div>
+            <div class="container-familytree">
+                <h2>Prepare, to grow a tree upwards!</h2>
+                <!-- This <div> element with class "p-familytree" serves as a placeholder for the family tree chart. The chart will be dynamically generated and inserted here by the application. Replace this comment with the actual chart rendering logic or output. -->
+                <div class="p-familytree"> 
+                        This section is where your family tree will appear once you start adding family members. 
+                        Use the controls below to begin building your tree. As you add parents, children, or other relatives,
+                        the tree will automatically update and display here in a clear, visual format. You can interact with
+                        the tree to view details about each person, edit their information, or rearrange relationships as needed.
+                        When you're ready, use the "Download as Image" button to save your tree as a picture for sharing or printing.
+                        Get started by adding your first family member! First family member must be added as a "root" member or oldest connecting ancestor.
+                </div>
+                <div class="familytree-instructions">
+                    <button onclick="this.closest('.container-familytree').style.display='none';">Close Instructions</button>
+                </div>
             </div>
-            <div class="container-button">
-                <button id="download-img-btn" class="download-btn" aria-label="Download family tree image">
-                            Download as Image
-                </button>
+            <div id="member-creator">
+                <h3>Add a Family Member</h3>
+                <div id="download-btn-page" class="download-btn">
+                    <button id="download-img-btn-page" class="download-btn" aria-label="Download family tree image">
+                        Download as Image
+                    </button>
+                </div>
+                <form id="add-member-form">
+                    <label for="member-name">Name:</label>
+                    <input type="text" id="member-name" name="member-name" required>
+
+                    <label for="related-to">Related to:</label>
+                    <select id="related-to" name="related-to">
+                    <!-- Options will be populated dynamically from the existing tree -->
+                    </select>
+
+                    <label for="relationship">Relationship:</label>
+                    <select id="relationship" name="relationship">
+                        <option value="parent">Parent</option>
+                        <option value="child">Child</option>
+                        <option value="sibling">Sibling</option>
+                    </select>
+
+                    <button type="submit" class="add-member-btn" id="add-member-btn">Add Member</button>
+                </form>
             </div>
         </div>
     </main>
