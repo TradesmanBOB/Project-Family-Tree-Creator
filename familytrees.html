@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Family Tree Creator</title>
     <link rel="stylesheet" href="CSS/styles.css" />
+    <!-- Links for necessary libraries for converting HTML to an image -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <!-- ADDED: This is the D3.js library, which is essential for drawing the tree -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
 </head>
 
 <!-- Body Starts now! -->
@@ -30,47 +34,50 @@
 
     <!-- Main content -->
     <main>
-        <div>
-            <div class="container-familytree">
-                <h2>Prepare, to grow a tree upwards!</h2>
-                <!-- This <div> element with class "p-familytree" serves as a placeholder for the family tree chart. The chart will be dynamically generated and inserted here by the application. Replace this comment with the actual chart rendering logic or output. -->
-                <div class="p-familytree"> 
-                        This section is where your family tree will appear once you start adding family members. 
-                        Use the controls below to begin building your tree. As you add parents, children, or other relatives,
-                        the tree will automatically update and display here in a clear, visual format. You can interact with
-                        the tree to view details about each person, edit their information, or rearrange relationships as needed.
-                        When you're ready, use the "Download as Image" button to save your tree as a picture for sharing or printing.
-                        Get started by adding your first family member! First family member must be added as a "root" member or oldest connecting ancestor.
-                </div>
-                <div class="familytree-instructions">
-                    <button onclick="this.closest('.container-familytree').style.display='none';">Close Instructions</button>
-                </div>
+        <div class="container-familytree">
+            <h2>Prepare, to grow a tree upwards!</h2>
+            <div class="p-familytree"> 
+                The below section is where your family tree will appear once you start adding family members. 
+                Use the controls on the left to begin building your tree. As you add parents, children, or other relatives,
+                the tree will automatically update and display here in a clear, visual format. You can interact with
+                the tree to view details about each person, edit their information, or rearrange relationships as needed.
+                When you're ready, use the "Download as Image" button to save your tree as an image for sharing or printing.
+                Get started by adding your first family member! First family member must be added as a "root" member or oldest connecting ancestor.
             </div>
-            <div id="member-creator">
-                <h3>Add a Family Member</h3>
-                <div id="download-btn-page" class="download-btn">
-                    <button id="download-img-btn-page" class="download-btn" aria-label="Download family tree image">
-                        Download as Image
-                    </button>
-                </div>
-                <form id="add-member-form">
-                    <label for="member-name">Name:</label>
-                    <input type="text" id="member-name" name="member-name" required>
-
-                    <label for="related-to">Related to:</label>
-                    <select id="related-to" name="related-to">
-                    <!-- Options will be populated dynamically from the existing tree -->
-                    </select>
-
-                    <label for="relationship">Relationship:</label>
-                    <select id="relationship" name="relationship">
-                        <option value="parent">Parent</option>
-                        <option value="child">Child</option>
-                        <option value="sibling">Sibling</option>
-                    </select>
-
-                    <button type="submit" class="add-member-btn" id="add-member-btn">Add Member</button>
-                </form>
+        </div>
+        <hr class="section-divider"/>
+        <div id="member-creator">
+            <h3>Add a Family Member</h3>
+            <div id="download-btn-page" class="download-btn">
+                <button id="download-img-btn-page" class="download-btn" aria-label="Download family tree image">
+                    Download as Image
+                </button>
+            </div>
+            <!-- This is the new container for the family tree visualization -->
+            <div id="family-tree-container">
+            <!-- The family tree will be rendered here dynamically by JavaScript -->
+            </div>
+            <form id="add-member-form">
+                <label for="member-name">Name:</label>
+                <input type="text" id="member-name" name="member-name" required>
+                <label for="related-to">Related to:</label>
+                <select id="related-to" name="related-to">
+                <!-- Options will be populated dynamically from the existing tree -->
+                </select>
+                <label for="relationship">Relationship:</label>
+                <select id="relationship" name="relationship">
+                    <option value="parent">Parent</option>
+                    <option value="child">Child</option>
+                    <option value="sibling">Sibling</option>
+                </select>
+                <button type="submit" class="add-member-btn" id="add-member-btn">Add Member</button>
+            </form>
+        </div>
+        <!-- A custom modal for displaying messages to the user -->
+        <div id="message-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <p id="modal-message"></p>
             </div>
         </div>
     </main>
