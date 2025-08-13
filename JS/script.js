@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Add a default option for the root member
         const defaultOption = document.createElement('option');
         defaultOption.value = '';
-        defaultOption.textContent = 'None (for the first member)';
+        defaultOption.textContent = 'None (for first member)';
         relatedToSelect.appendChild(defaultOption);
 
         // Add each family member to the dropdown
