@@ -23,27 +23,26 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // An empty array to store the family members.
+    // An array to store the family members. Each member is an object.
+    // The structure will be: { id: 1, name: "Name", relatedTo: 0, relationship: "root" }
     let familyMembers = [];
+    let nextId = 1; // A simple counter to assign unique IDs to each new member.
+
     const addMemberForm = document.getElementById('add-member-form');
     const memberNameInput = document.getElementById('member-name');
     const relatedToSelect = document.getElementById('related-to');
     const relationshipSelect = document.getElementById('relationship');
     const familyTreeContainer = document.getElementById('family-tree-container');
-    const downloadImgBtnNav = document.getElementById('download-img-btn-nav');
+
     const downloadImgBtnPage = document.getElementById('download-img-btn-page');
 
-    // Function to update the related-to dropdown with existing members.
+    /**
+     * @description This function updates the 'Related to' dropdown with existing family members.
+     * It ensures the user can select an existing member to link a new one to.
+     */
     function updateRelatedToDropdown() {
         // Clear existing options
-        relatedToSelect.innerHTML = '';
-        // Add a default option for the root member
-        const defaultOption = document.createElement('option');
-        defaultOption.value = '';
-        defaultOption.textContent = 'None (for first member)';
-        relatedToSelect.appendChild(defaultOption);
-
-        // Add each family member to the dropdown
+        relatedToSelect.innerHTML = '<option value="0">This is the Root of the tree</option>';
         familyMembers.forEach(member => {
             const option = document.createElement('option');
             option.value = member.id;
@@ -52,129 +51,172 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Function to draw the family tree using D3.js.
+    /**
+     * @description This is the core function that visualizes the family tree using D3.js.
+     * It takes the `familyMembers` array and renders a hierarchical tree structure.
+     */
     function drawTree() {
-        // Clear the existing SVG
-        familyTreeContainer.innerHTML = '';
-        const data = d3.stratify()
-            .id(d => d.id)
-            .parentId(d => d.parentId)(familyMembers);
-
-        // If no data, display a message and return.
-        if (!data.children && !data.data) {
-            familyTreeContainer.innerHTML = '<p class="familytree-instructions">Start by adding the first family member to create the tree!</p>';
+        // Check if there are any members to draw. If not, clear the container.
+        if (familyMembers.length === 0) {
+            familyTreeContainer.innerHTML = '<p class="familytree-instructions">Start by adding the first member of your family tree.</p>';
             return;
         }
 
-        const treeLayout = d3.tree().size([800, 500]);
-        const root = d3.hierarchy(data);
-        treeLayout(root);
+        // Clear previous SVG content to redraw the tree
+        familyTreeContainer.innerHTML = '';
 
-        const svg = d3.select(familyTreeContainer)
-            .append('svg')
-            .attr('width', 900)
-            .attr('height', 600)
-            .append('g')
-            .attr('transform', 'translate(50, 50)');
+        // D3.js setup for tree visualization
+        const margin = {top: 40, right: 90, bottom: 50, left: 90};
+        const width = 960 - margin.left - margin.right;
+        const height = 500 - margin.top - margin.bottom;
 
-        // Draw links
-        const links = svg.selectAll('.link')
-            .data(root.links())
-            .enter()
-            .append('path')
-            .attr('class', 'link')
-            .attr('d', d3.linkVertical()
-                .x(d => d.x)
-                .y(d => d.y));
+        // Append SVG to the container
+        const svg = d3.select(familyTreeContainer).append("svg")
+            .attr("viewBox", `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`)
+            .append("g")
+            .attr("transform", `translate(${margin.left},${margin.top})`);
 
-        // Draw nodes
-        const nodes = svg.selectAll('.node')
-            .data(root.descendants())
-            .enter()
-            .append('g')
-            .attr('class', 'node')
-            .attr('transform', d => `translate(${d.x}, ${d.y})`);
+        // Create the D3 tree layout with increased spacing
+        const treeLayout = d3.tree()
+            .nodeSize([150, 150]); // Use nodeSize to control horizontal and vertical spacing
 
-        // Add circles to nodes
-        nodes.append('circle')
-            .attr('r', 20)
-            .attr('fill', '#3f0')
-            .attr('stroke', '#000')
-            .attr('stroke-width', 2);
-        
-        // Add text labels to nodes
-        nodes.append('text')
-            .attr('dy', -25) // Position the text above the circle
-            .attr('text-anchor', 'middle')
-            .text(d => d.data.data.name);
+        // Filter out non-hierarchical relationships (spouses) for the main tree
+        const hierarchicalMembers = familyMembers.filter(m => m.relationship !== "spouse");
 
+        let root;
+        if (hierarchicalMembers.length > 0) {
+            root = d3.stratify()
+                .id(d => d.id)
+                .parentId(d => d.relatedTo === "0" ? null : d.relatedTo)
+                (hierarchicalMembers);
+
+            treeLayout(root);
+
+            // Draw hierarchical links (parent-child connections)
+            svg.selectAll(".link")
+                .data(root.links())
+                .enter().append("path")
+                .attr("class", "link")
+                .attr("d", d3.linkVertical()
+                    .x(d => d.x)
+                    .y(d => d.y));
+
+            // Draw a horizontal line to connect siblings, using the new `sibling-line` class
+            const siblingGroups = d3.group(root.descendants(), d => d.parent ? d.parent.id : null);
+            siblingGroups.forEach((children, parentId) => {
+                if (children.length > 1) {
+                    const firstChild = children[0];
+                    const lastChild = children[children.length - 1];
+                    const midpointY = firstChild.y - 75; // Position the horizontal line above children
+
+                    svg.append("line")
+                        .attr("class", "sibling-line")
+                        .attr("x1", firstChild.x)
+                        .attr("y1", midpointY)
+                        .attr("x2", lastChild.x)
+                        .attr("y2", midpointY);
+                }
+            });
+
+            // Add hierarchical nodes (circles and text)
+            const nodes = svg.selectAll(".node")
+                .data(root.descendants())
+                .enter().append("g")
+                .attr("class", "node")
+                .attr("transform", d => `translate(${d.x},${d.y})`);
+
+            const nodeText = nodes.append("text")
+                .text(d => d.data.name);
+
+            nodes.insert("circle", "text")
+                .attr("r", function(d) {
+                    const bbox = this.parentNode.querySelector("text").getBBox();
+                    return Math.max(bbox.width, bbox.height) / 2 + 10;
+                });
+
+            // Draw spouse links and nodes separately
+            const spouseLinks = familyMembers.filter(m => m.relationship === "spouse");
+            const allNodes = root.descendants();
+
+            spouseLinks.forEach(spouse => {
+                const partner = allNodes.find(d => d.data.id == spouse.relatedTo);
+
+                if (partner) {
+                    const spouseX = partner.x + 150;
+                    const spouseY = partner.y;
+
+                    svg.append("line")
+                        .attr("class", "spouse-link")
+                        .attr("x1", partner.x)
+                        .attr("y1", partner.y)
+                        .attr("x2", spouseX)
+                        .attr("y2", spouseY);
+
+                    const spouseNode = svg.append("g")
+                        .attr("class", "node")
+                        .attr("transform", `translate(${spouseX},${spouseY})`);
+
+                    const spouseText = spouseNode.append("text")
+                        .text(spouse.name);
+
+                    spouseNode.insert("circle", "text")
+                        .attr("r", function() {
+                            const bbox = this.parentNode.querySelector("text").getBBox();
+                            return Math.max(bbox.width, bbox.height) / 2 + 10;
+                        });
+                }
+            });
+        } else {
+            const rootMember = familyMembers.find(m => m.relatedTo === "0");
+            if (rootMember) {
+                const nodes = svg.append("g")
+                    .attr("class", "node")
+                    .attr("transform", `translate(${width / 2}, ${height / 2})`);
+
+                const rootText = nodes.append("text")
+                    .text(rootMember.name);
+
+                nodes.insert("circle", "text")
+                    .attr("r", function() {
+                        const bbox = this.parentNode.querySelector("text").getBBox();
+                        return Math.max(bbox.width, bbox.height) / 2 + 10;
+                    });
+            }
+        }
     }
 
-    // Event listener for the form submission
     addMemberForm.addEventListener('submit', (event) => {
         event.preventDefault();
-        const memberName = memberNameInput.value.trim();
+
+        const memberName = memberNameInput.value;
         const relatedTo = relatedToSelect.value;
         const relationship = relationshipSelect.value;
 
-        // Validation for the first member (must have no parent)
-        if (familyMembers.length === 0 && relatedTo) {
-            showMessage("The first member of the tree must not be related to anyone. Please select 'None' for the 'Related to' field.");
+        if (familyMembers.length === 0 && relatedTo !== "0") {
+            showMessage("The first member of the tree must be the root (Related to: This is the Root of the tree).");
             return;
         }
-        
-        const newMember = {
-            id: familyMembers.length + 1, // Simple ID for now
-            name: memberName,
-            parentId: relationship === 'child' ? relatedTo : null, // Parent is the relatedTo member
-            children: []
-        };
-        
-        // If the new member is a child, find the parent and add the new member to their children list
-        if (relationship === 'child') {
-            const parent = familyMembers.find(m => m.id == relatedTo);
-            if (parent) {
-                newMember.parentId = parent.id;
-            }
-        }
-        
-        // If the new member is a parent, find the child and add the new member as their parent
-        if (relationship === 'parent') {
-            const child = familyMembers.find(m => m.id == relatedTo);
-            if (child) {
-                newMember.children.push(child);
-                child.parentId = newMember.id;
-            }
-        }
 
-        // If the new member is a sibling, find the parent of the related member and add the new member as a child
-        if (relationship === 'sibling') {
-            const sibling = familyMembers.find(m => m.id == relatedTo);
-            if (sibling && sibling.parentId) {
-                newMember.parentId = sibling.parentId;
-            } else {
-                showMessage("A sibling must be related to someone who has a parent. Please add a parent first.");
-                return;
-            }
-        }
+        const newMember = {
+            id: nextId++,
+            name: memberName,
+            relatedTo: relatedTo,
+            relationship: relationship
+        };
 
         familyMembers.push(newMember);
-
-        // Update the form and redraw the tree
         updateRelatedToDropdown();
         drawTree();
         addMemberForm.reset();
     });
 
-    // Function to handle image download
     function downloadImage(downloadButton) {
-        // Use html2canvas to capture the family tree container as an image
         const treeContainer = document.getElementById('family-tree-container');
         if (!treeContainer || !treeContainer.querySelector('svg')) {
             showMessage("There is no family tree to download yet. Please add some members first.");
             return;
         }
-        
+
         html2canvas(treeContainer).then(canvas => {
             const link = document.createElement('a');
             link.href = canvas.toDataURL('image/png');
@@ -188,12 +230,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Event listeners for the download buttons
-    downloadImgBtnNav.addEventListener('click', () => downloadImage(downloadImgBtnNav));
     downloadImgBtnPage.addEventListener('click', () => downloadImage(downloadImgBtnPage));
     
-    // Initial call to set up the dropdown and the tree space
     updateRelatedToDropdown();
     drawTree();
 });
-
