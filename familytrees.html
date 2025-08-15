@@ -45,37 +45,46 @@
                 the tree will automatically update and display here in a clear, visual format. You can interact with
                 the tree to view details about each person, edit their information, or rearrange relationships as needed.
                 When you're ready, use the "Download as Image" button to save your tree as an image for sharing or printing.
-                Get started by adding your first family member! First family member must be added as a "root" member or oldest connecting ancestor.
+                Get started by adding your first family member! First family member must be added as a "root" member or oldest known ancestor.
             </div>
         </div>
         <hr class="section-divider"/>
-        <!-- This is the new container for the family tree visualization -->
-        <div id="family-tree-container">
-        <!-- The family tree will be rendered here dynamically by JavaScript -->
-        </div>
-        <div id="member-creator">
-            <h3>Add a Family Member</h3>
-            <div id="download-btn-page" class="download-btn">
-                <button id="download-img-btn-page" class="download-btn" aria-label="Download family tree image">
-                    Download as Image
-                </button>
+        <div class="canvas-creator-container">
+            <div id="member-creator">
+                <h3>Add a Family Member</h3>
+                <div id="download-btn-page" class="download-btn">
+                    <button id="download-img-btn-page" class="download-btn" aria-label="Download family tree image">
+                        Download as Image
+                    </button>
+                </div>
+                <form id="add-member-form">
+                    <label for="member-name">Name:</label>
+                    <input type="text" id="member-name" name="member-name" required>
+                    <label for="related-to">Related to:</label>
+                    <select id="related-to" name="related-to">
+                    <!-- Options will be populated dynamically from the existing tree -->
+                    </select>
+                    <label for="relationship">Relationship:</label>
+                    <select id="relationship" name="relationship">
+                        <option value="root">Root</option>
+                        <option value="parent">Parent</option>
+                        <option value="spouse">Spouse</option>
+                        <option value="child">Child</option>
+                        <option value="sibling">Sibling</option>
+                    </select>
+                    <div id="spouse-option-container" class="mt-4 hidden">
+                        <label for="is-spouse" class="flex items-center">
+                            <input type="checkbox" id="is-spouse" class="form-checkbox h-4 w-4 text-green-600 rounded">
+                            <span class="ml-2 text-gray-700">This member is the spouse</span>
+                        </label>
+                    </div>
+                    <button type="submit" class="add-member-btn" id="add-member-btn">Add Member</button>
+                </form>
             </div>
-            <form id="add-member-form">
-                <label for="member-name">Name:</label>
-                <input type="text" id="member-name" name="member-name" required>
-                <label for="related-to">Related to:</label>
-                <select id="related-to" name="related-to">
-                <!-- Options will be populated dynamically from the existing tree -->
-                </select>
-                <label for="relationship">Relationship:</label>
-                <select id="relationship" name="relationship">
-                    <option value="parent">Parent</option>
-                    <option value="child">Child</option>
-                    <option value="sibling">Sibling</option>
-                    <option value="spouse">Spouse</option>
-                </select>
-                <button type="submit" class="add-member-btn" id="add-member-btn">Add Member</button>
-            </form>
+            <!-- This is the new container for the family tree visualization -->
+            <div id="family-tree-container">
+            <!-- The family tree will be rendered here dynamically by JavaScript -->
+            </div>
         </div>
         <!-- A custom modal for displaying messages to the user -->
         <div id="message-modal" class="modal">
@@ -86,7 +95,7 @@
         </div>
     </main>
     <!-- Footer -->
-    <footer>
+    <footer class="familytrees-footer">
         <div class="container">
         <p>&copy; 2025 Family Tree Creator. All rights reserved.</p>
         </div>

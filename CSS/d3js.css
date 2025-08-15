@@ -1,12 +1,10 @@
 /* Styles specifically for the D3.js family tree visualization */
 
 #family-tree-container {
-    margin-top: 2rem;
     width: 100%;
-    height: 1000px;
+    height: 920px;
     overflow: auto;
     background-color: #000;
-    border: 1px solid #ccc;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -19,7 +17,7 @@
 }
 
 .node text {
-    font-size: 14px;
+    font-size: 16px;
     font-family: sans-serif;
     font-weight: bold;
     fill: #ccc;
@@ -28,7 +26,7 @@
 /* Link styling for the lines connecting the nodes */
 .link {
     fill: none;
-    stroke: #f60;
+    stroke: #eee;
     stroke-opacity: 0.8;
     stroke-width: 1.5px;
 }
@@ -49,7 +47,6 @@
     top: 0;
     width: 100%; /* Full width */
     height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
     background-color: #bbbbbb66; /* Black w/ opacity */
     justify-content: center;
     align-items: center;
@@ -102,7 +99,7 @@
 
 .link {
     fill: none;
-    stroke: #888; /* Grey for parent-child connections */
+    stroke: #eee; /* Grey for parent-child connections */
     stroke-width: 2px;
 }
 
@@ -116,4 +113,23 @@
     fill: none;
     stroke: #3f0; /* Green for sibling connections */
     stroke-width: 2px;
+}
+
+.node text {
+    font: 10px sans-serif;
+    text-anchor: middle;
+    fill: #fff;
+    font-weight: 600;
+}
+
+.node circle {
+    fill: #16a34a;
+    stroke: #fff;
+    stroke-width: 3px;
+}
+
+.link {
+    fill: none;
+    stroke: lightblue;
+    stroke-width: 2.5px;
 }

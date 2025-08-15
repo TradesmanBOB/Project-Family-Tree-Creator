@@ -72,6 +72,15 @@ h2 {
     justify-self: center;
 }
 
+/* container for canvas creator */
+.canvas-creator-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
 /* Div for member-creator */
 #member-creator {
     background-color: #d2d2d2;
@@ -80,16 +89,11 @@ h2 {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 350px;
-    z-index: 100;
     /* inner content */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    position: relative;
-    z-index: 1000;
-    bottom: 61.5rem;
-    left: 1rem;
 }
 
 h3 {
@@ -147,6 +151,34 @@ label {
     align-items: center;
     justify-content: center;
 }
+
+/* related to partner checkbox css */
+/* Container for the spouse checkbox, initially hidden */
+#spouse-option-container {
+    margin-top: 1rem;
+    display: none;
+}
+
+/* Label for the checkbox, using Flexbox to align items */
+#spouse-option-container label {
+    display: flex;
+    align-items: center;
+}
+
+/* Styling for the checkbox input itself */
+#spouse-option-container input[type="checkbox"] {
+    height: 1rem;
+    width: 1rem;
+    color: #16a34a; /* A shade of green */
+    border-radius: 0.25rem;
+}
+
+/* Styling for the text next to the checkbox */
+#spouse-option-container span {
+    margin-left: 0.5rem;
+    color: #374151; /* A shade of gray */
+}
+/* end of spouse-option */
 
 .add-member-btn {
     background-color: #3f0;
