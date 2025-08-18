@@ -21,6 +21,8 @@ body.personaltree {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    max-width: 90%;
+    overflow: hidden;
 }
 
 /* h3 for this page */
@@ -35,36 +37,52 @@ body.personaltree {
     padding: 1rem;
     margin: 10px 0;
     border-radius: 5px;
-    width: 250px;
+    width: 125px;
 }
 
 .familyname {
     font-weight: bold;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     margin: 1rem;
 }
 
 .familymemberposition {
     font-style: italic;
     color: #ccc;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-family: cursive, sans-serif;
     margin: 1rem;
 }
 
 .familyrelation-tome {
     color: #eee;
-    font-size: 1.25rem;
+    font-size: 1rem;
     font-family: monospace, sans-serif;
     margin: 1rem;
+}
+
+/* Frank/Annie, text sizing */
+.top-familymember-name {
+    font-size: 1.60rem;
+    margin: 0.5rem;
+}
+
+.top-familymember-position {
+    font-size: 1.5rem;
+    margin: 0.5rem;
+}
+
+.top-familymember-tome {
+    font-size: 1.25rem;
+    margin: 0.5rem;
 }
 
 /* symbol styling */
 .x {
     color: #fff;
-    font-size: 1.5rem;
+    font-size: 3rem;
     font-weight: bold;
-    margin: 2rem;
+    margin: .5rem;
     display: flex;
     align-items: center;
     rotate: 45deg;
@@ -85,10 +103,72 @@ body.personaltree {
 }
 
 /* Divs for each parent group */
-.great-grandparents, .grandparents {
+.thegariglianofamily, .thecorriganfamily {
     background-color: #444;
     padding: 1rem;
     border-radius: 5px;
     display: flex;
     flex-direction: row;
 }
+
+.gariglianoparents {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: inherit;
+    padding: 1rem;
+    margin: 1rem;
+}
+
+.gariglianoparent1, .gariglianoparent2 {
+    background-color: #555;
+    color: #fff;
+    padding: 1rem;
+    margin: 10px 0;
+    border-radius: 5px;
+    width: 225px;
+    height: 175px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.thegariglianofamily {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    border: 2px solid #666;
+    width: 100vw;
+    max-width: 115rem;
+    overflow: scroll;
+    gap: 1rem;
+}
+
+/* corrigan family start parents */
+.thecorriganfamily {
+    background-color: #555;
+}
+
+.familymember3, .familymember4 {
+    background-color: inherit;
+    color: #fff;
+    padding: 1rem 0.5rem;
+    margin: 10px 0;
+    border-radius: 5px;
+    width: 100px;
+    height: 100px;
+}
+
+.corriganX {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 3rem;
+    font-weight: bold;
+    rotate: 45deg;
+}
+
+/* The Next Generation */

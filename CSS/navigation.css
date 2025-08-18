@@ -16,8 +16,10 @@ nav ul {
 }
 
 nav ul li {
-    display: inline;
+    display: flex;
     list-style: none;
+    justify-content: center;
+    align-items: center;
 }
 
 li.homeanchor a,
@@ -52,7 +54,9 @@ h1 a {
     text-decoration: none;
 }
 
-h1 a:hover {
-    color: rgb(72, 255, 0);
+.h1-a:hover, .h1-a:focus, .h1-a:active {
+    background-color: #000;
+    color: #fff;
     text-decoration: none;
+    border: #ffa500 solid 5px;
 }
