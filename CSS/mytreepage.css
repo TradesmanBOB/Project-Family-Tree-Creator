@@ -155,7 +155,8 @@ label {
 /* related to partner checkbox css */
 /* Container for the spouse checkbox, initially hidden */
 #spouse-option-container {
-    margin-top: 1rem;
+    margin-top: .5rem;
+    margin-bottom: 1rem;
     display: none;
 }
 
@@ -191,7 +192,25 @@ label {
     margin-top: 0;
     max-width: 200px;
     width: 100%;
-    border: 4px solid #00005d;
+    border: 6px solid #00005d;
+}
+
+.add-member-btn:hover,
+.add-member-btn:focus {
+    background-color: #0e4700;
+    border: 6px solid orange;
+    color: #3f0;
 }
 
 /* insert general map here */
+.spouse-node {
+    background-color: #0e4700;
+    padding: 1rem;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
