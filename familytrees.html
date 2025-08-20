@@ -51,17 +51,20 @@
         <hr class="section-divider"/>
         <div class="canvas-creator-container">
             <div id="member-creator">
-                <h3>Add a Family Member</h3>
+                <h3 class="h3-form">Add a Family Member</h3>
                 <button type="button" id="download-img-btn-page" class="download-btn" aria-label="Download family tree image">
                     Download as Image
                 </button>
                 <form id="add-member-form">
+                    <p class="instructions">Enter name of family member, if first (make oldest member, like great-grandparent)</p>
                     <label for="member-name">Name:</label>
                     <input type="text" id="member-name" name="member-name" required>
+                    <p class="instructions">Select which member the person is related to (locked person is first)</p>
                     <label for="related-to">Related to:</label>
                     <select id="related-to" name="related-to">
                     <!-- Options will be populated dynamically from the existing tree -->
                     </select>
+                    <p class="instructions">Select the relationship type for this member</p>
                     <label for="relationship">Relationship:</label>
                     <select id="relationship" name="relationship">
                         <option value="root">Root</option>
