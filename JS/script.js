@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // If the tree is empty, the first member is the root and has no parent. And the dropdowns are disabled.
             const option = document.createElement('option');
             option.value = 'root';
-            option.textContent = 'This is the first family member (Root)';
+            option.textContent = 'First member (Root)';
             relatedToDropdown.appendChild(option);
             relatedToDropdown.disabled = true;
             relationshipDropdown.disabled = true;

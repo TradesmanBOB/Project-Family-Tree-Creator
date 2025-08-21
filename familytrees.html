@@ -56,23 +56,36 @@
                     Download as Image
                 </button>
                 <form id="add-member-form">
-                    <p class="instructions">Enter name of family member, if first (make oldest member, like great-grandparent)</p>
-                    <label for="member-name">Name:</label>
-                    <input type="text" id="member-name" name="member-name" required>
-                    <p class="instructions">Select which member the person is related to (locked person is first)</p>
-                    <label for="related-to">Related to:</label>
-                    <select id="related-to" name="related-to">
-                    <!-- Options will be populated dynamically from the existing tree -->
-                    </select>
-                    <p class="instructions">Select the relationship type for this member</p>
-                    <label for="relationship">Relationship:</label>
-                    <select id="relationship" name="relationship">
-                        <option value="root">Root</option>
-                        <option value="parent">Parent</option>
-                        <option value="spouse">Spouse</option>
-                        <option value="child">Child</option>
-                        <option value="sibling">Sibling</option>
-                    </select>
+                    <!-- Name of family member -->
+                    <div class="name-div">
+                        <label for="member-name">Name:</label>
+                        <p class="instructions">Enter name of family member, if first (make oldest member, like great-grandparent)</p>
+                        <input type="text" id="member-name" name="member-name" required>
+                    </div>
+
+                    <!-- Relative of input family member (dynamic updates) -->
+                    <div class="related-to-div">
+                        <label for="related-to" class="related-to-name">Related to:</label>
+                        <p class="instructions">Select which member the person is related to (locked person is first)</p>
+                        <select id="related-to" name="related-to">
+                        <!-- Options will be populated dynamically from the existing tree -->
+                        </select>
+                    </div>
+
+                    <!-- Relationship type (Root, Parent, Spouse, Child, Sibling)-->
+                    <div class="relationship-div">
+                        <label for="relationship">Relationship:</label>
+                        <p class="instructions">Select the relationship type for this member</p>
+                        <select id="relationship" name="relationship">
+                            <option value="root">Root</option>
+                            <option value="parent">Parent</option>
+                            <option value="spouse">Spouse</option>
+                            <option value="child">Child</option>
+                            <option value="sibling">Sibling</option>
+                        </select>
+                    </div>
+
+                    <!-- Spouse checkbox -->
                     <div id="spouse-option-container" class="mt-4 hidden">
                         <label for="is-spouse" class="flex items-center">
                             <input type="checkbox" id="is-spouse" class="form-checkbox h-4 w-4 text-green-600 rounded">
