@@ -11,7 +11,7 @@
 
 /* Container for page detail & use */
 div.container-familytree {
-    background-color: #aaaaaa;
+    background-color: #4a4a4a;
     padding: 1.5rem;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -35,6 +35,41 @@ h2 {
     margin-bottom: 2rem;
     padding-left: 8rem;
     padding-right: 8rem;
+}
+
+/* p-familytree */
+.li-span-p {
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    align-items: center;
+    justify-self: center;
+    justify-content: center;
+    text-align: center;
+}
+.span-p {
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    align-items: center;
+    justify-self: center;
+    justify-content: center;
+    text-align: center;
+    color: #3f0;
+}
+
+.lower-p {
+    margin-bottom: 0rem;
+}
+
+.familytree-list {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    align-items: center;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    color: #00ffff; 
 }
 
 .familytree-instructions {
@@ -62,7 +97,7 @@ h2 {
 
 .section-divider {
     color: white;
-    border: #00005d solid 5px;
+    border: #0085a5 solid 5px;
     border-radius: 50%;
     margin: 2rem 0;
     width: 95%;

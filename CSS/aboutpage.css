@@ -6,22 +6,16 @@
     background-color: #282828;
 }
 
-.h1-about {
-    font-size: 4.5rem;
-    color: #c8c8c8;
-    margin-bottom: 1rem;
-}
-
 div.container-main {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    align-self: auto;
+    justify-self: center;
     text-align: center;
-    max-width: 1250px;
-    margin: 0 auto;
     padding: 20px;
-    gap: 2.5rem;
+    gap: 1.5rem;
 }
 
 .container-main h2 {
@@ -35,18 +29,18 @@ div.container-main {
     font-size: 1.5rem;
     color: #c8c8c8;
     margin: 0;
+    width: 85%;
 }
 
 p.paragraph {
     font-size: 1.6rem;
     color: #e0e0e0;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 }
 
 p.notice {
     font-weight: bold;
     font-size: 1.6rem;
-    margin-top: 2rem;
     margin-bottom: 2rem;
     color: rgb(255, 136, 0);
 }

@@ -5,17 +5,3 @@
     margin: 0;
     padding: 0;
 }
-
-/* h1 title for family trees page */
-h1 {
-    text-align: center;
-    font-size: 4em;
-    color: #3f0;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-h1 a:hover {
-    color: #0000eb;
-    border: 2px solid #3f0;
-}
